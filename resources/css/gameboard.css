@@ -26,7 +26,6 @@
     width: 30%;
 }
 
-
 .correct, #greenCorrect {
     background-color: #28a745;
 }
@@ -38,7 +37,6 @@
 .incorrect, #redIncorrect {
     background-color: #dc3545;
 }
-
 
 #hud {
     display: flex;
