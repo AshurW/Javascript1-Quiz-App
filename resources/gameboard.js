@@ -6,6 +6,7 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById("questionCounter");
 const scoreText = document.getElementById("score");
 const POINTS = 10;
+ALMOST_POINT = 5;
 let q;
 let currentQuestion = {};
 let questions = [];
@@ -87,16 +88,22 @@ class Questions {
           const selectedChoice = e.target;
           const selectedAnswer = selectedChoice.dataset["number"];
 
+          // check if its correct or almost correct. For now almost correct is either the one above or under the right question
           let classToApply = "";
           if (selectedAnswer == currentQuestion.answer) {
             classToApply = "correct";
+          }else if (selectedAnswer == (currentQuestion.answer + 1) || selectedAnswer == (currentQuestion.answer - 1)){
+            classToApply = "almost";
           }else {
             classToApply = "incorrect";
           }
 
           // If the answer waas correct increment the score by the constant POINT
+          // If you was almost close to the answer you get ALMOST_POINT
           if(classToApply === "correct"){
             this.incrementScore(POINTS);
+          } else if (classToApply === "almost"){
+            this.incrementScore(ALMOST_POINT);
           }
 
           selectedChoice.parentElement.classList.add(classToApply);

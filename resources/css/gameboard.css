@@ -28,6 +28,10 @@
     background-color: #dc3545;
 }
 
+.almost {
+    background-color: rgb(253, 107, 54);
+}
+
 #hud {
     display: flex;
     justify-content: space-between;
