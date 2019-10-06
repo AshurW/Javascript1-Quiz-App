@@ -8,12 +8,17 @@ let q;
 let currentQuestion = {};
 let questions = [];
 
+
 fetch("questions.json")
   .then(res => {
     return res.json();
   })
   .then(loadedQuestions => {
-    questions = loadedQuestions;
+    if(localStorage.getItem("category") == "math"){
+      questions = loadedQuestions.mathq;
+    } else {
+      questions = loadedQuestions.computerq;
+    }
     startGame();
   })
 

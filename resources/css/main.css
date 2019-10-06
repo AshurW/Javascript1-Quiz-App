@@ -70,3 +70,8 @@ select {
     font-size: 1.2rem;
 }
 
+#playerName, #textInfo {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: chocolate;
+}
