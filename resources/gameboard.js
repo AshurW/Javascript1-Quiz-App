@@ -12,7 +12,7 @@ let currentQuestion = {};
 let questions = [];
 
 /**
- * before Starting the game we are fetchin the questions and storing them
+ * before Starting the game we are fetchin the questions from a json file and storing them
  */
 fetch("questions.json")
   .then(res => {
@@ -122,7 +122,7 @@ class Questions {
     }
 }
 
-//not doing mutch right now just stores the some values and set the score to 0 at the begining
+//not doing mutch right now just stores some values and set the score to 0 at the begining
 class Quiz extends Questions {
   constructor(name, maxQ) {
     super();

@@ -20,17 +20,25 @@
     background-color: aqua;
 }
 
-.correct {
+#infoBox {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+
+.correct, #greenCorrect {
     background-color: #28a745;
 }
-  
-.incorrect {
+
+.almost, #orangeAlmost {
+    background-color: rgb(253, 107, 54);
+}
+
+.incorrect, #redIncorrect {
     background-color: #dc3545;
 }
 
-.almost {
-    background-color: rgb(253, 107, 54);
-}
 
 #hud {
     display: flex;
