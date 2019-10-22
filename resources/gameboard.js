@@ -6,7 +6,7 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById("questionCounter");
 const scoreText = document.getElementById("score");
 const POINTS = 10;
-ALMOST_POINT = 5;
+const ALMOST_POINT = 5;
 let q;
 let currentQuestion = {};
 let questions = [];
@@ -83,7 +83,7 @@ class Questions {
   checkAnswer() {
     choices.forEach(choice => {
       choice.addEventListener("click", e => {
-        // if (!this.acceptingAnwsers) return;
+        if (!this.acceptingAnwsers) return;
         this.acceptingAnwsers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
