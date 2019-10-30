@@ -23,22 +23,19 @@
 #infoBox {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    align-items: center;
+    width: 100%;
 }
 
 .choiceSelected {
     background-color: cyan;
 }
 
-.correct, #greenCorrect {
+#greenCorrect {
     background-color: #28a745;
 }
 
-.almost, #orangeAlmost {
-    background-color: rgb(253, 107, 54);
-}
-
-.incorrect, #redIncorrect {
+#redIncorrect {
     background-color: #dc3545;
 }
 
@@ -54,4 +51,8 @@
 
 .hud-main-text {
     text-align: center;
+}
+
+#nextQ {
+    margin: 0, auto;
 }
