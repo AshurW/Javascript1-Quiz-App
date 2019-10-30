@@ -2,15 +2,15 @@
  * declaring some variable so they become "Global" and i can use them freely around the code
  */
 const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName("choice-text"));
+const choices = document.querySelectorAll(".choice-text");
 const questionCounterText = document.getElementById("questionCounter");
 const scoreText = document.getElementById("score");
+const nextQ = document.getElementById("nextQ")
 const POINTS = 10;
-const ALMOST_POINT = 5;
 let q;
 let currentQuestion = {};
 let questions = [];
-
+let answerChoice = [];
 /**
  * before Starting the game we are fetchin the questions from a json file and storing them
  */
@@ -27,6 +27,26 @@ fetch("questions.json")
     startGame();
   })
 
+/**
+ * The next question button gets the selected answers and puts them in an array
+ * resets the selection of the answers
+ * and calls the checkanswer
+ */
+nextQ.addEventListener("click", e => {
+  //resets answerchoice and answers
+  answerChoice = [];
+  let answers = null;
+  answers = document.querySelectorAll("p.choice-text.choiceSelected");
+  answers.forEach(ans => {
+    answerChoice.push(ans.dataset.number);
+  });
+  let els = document.querySelectorAll(".choiceSelected");
+  for (let i = 0; i < els.length; i++) {
+    els[i].classList.remove("choiceSelected");
+  }
+
+  q.checkAnswer();
+})
 /**
  * Simply starting the game by creating an quiz object and calling the getNewQuestion method 
  */
@@ -45,11 +65,6 @@ class Questions {
   }
 
   getNewQuestion() {
-    //if the there are no more question to diplay it moves to the gameover.html to display the result
-    if (this.availableQuestions.length === 0 || this.questionCounter >= this.maxQ) {
-      localStorage.setItem("endScore", this.score);
-      return window.location.assign("/gameover.html");
-    }
     //increments quesiontCounter and displays at what question the user is currently at
     this.questionCounter++;
     questionCounterText.innerText = this.questionCounter + "/" + this.maxQ;
@@ -63,62 +78,62 @@ class Questions {
       choice.innerText = currentQuestion["choice" + number];
     });
 
-    /**
-     * after displaying the question and asnwers remove it from available question
-     * and then sets this.acceptingAnwsers to true so that it can accepts the answer
-     */
+    // This is to prevent it from storing multipleclickers on one element
+    // so it creates evenetlistner only once the game starts
+    if (this.questionCounter < 2) {
+      choices.forEach(choice => {
+        choice.addEventListener("click", (e) => {
+          // So that you can see what answers you have marked 
+          e.target.classList.toggle("choiceSelected");
+        });
+      });
+    }
+    
+    //after displaying the question and asnwers remove it from available question
     this.availableQuestions.splice(questionIndex, 1);
     console.log(this.availableQuestions);
-    this.acceptingAnwsers = true;
 
-    this.checkAnswer();
   }
 
+
   /**
-   * Adds event listeners on all the choices
-   * then check to see if the answer that is click is correct or not
-   * makes the backround color green for correct and rec for incorrect pause for 800 msec
+   * check to see if the answers that is click is correct or not
+   * increments the score if you have picked one of the right answers and decrease if you picked the wrong
    * and then gets a new question to display.
    */
   checkAnswer() {
-    choices.forEach(choice => {
-      choice.addEventListener("click", e => {
-        if (!this.acceptingAnwsers) return;
-        this.acceptingAnwsers = false;
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset["number"];
+    // Loops through the answers you have picked and checks if they exsist in the "json array"
+    for (let i = 0; i < answerChoice.length; i++) {
+      if (answerChoice.indexOf(currentQuestion.answer[i]) >= 0) {
+        this.addScore(POINTS);
+      } else {
+        this.subtractScore(POINTS);
+      }
 
-        // check if its correct or almost correct. For now almost correct is either the one above or under the right question
-        let classToApply = "";
-        if (selectedAnswer == currentQuestion.answer) {
-          classToApply = "correct";
-        } else if (selectedAnswer == (currentQuestion.answer + 1) || selectedAnswer == (currentQuestion.answer - 1)) {
-          classToApply = "almost";
-        } else {
-          classToApply = "incorrect";
-        }
+    }
 
-        // If the answer waas correct increment the score by the constant POINT
-        // If you was almost close to the answer you get ALMOST_POINT
-        if (classToApply === "correct") {
-          this.incrementScore(POINTS);
-        } else if (classToApply === "almost") {
-          this.incrementScore(ALMOST_POINT);
-        }
-
-        selectedChoice.parentElement.classList.add(classToApply);
-
-        setTimeout(() => {
-          selectedChoice.parentElement.classList.remove(classToApply);
-          q.getNewQuestion();
-        }, 800);
-      });
-    });
+    //if the there are no more question to diplay it moves to the gameover.html to display the result
+    //else gets a new question
+    if (this.availableQuestions.length === 0 || this.questionCounter >= this.maxQ) {
+      this.endGame();
+    } else {
+      q.getNewQuestion();
+    }
   }
 
-  incrementScore(points) {
+  addScore(points) {
     this.score += points;
     scoreText.innerText = this.score;
+  }
+  subtractScore(points) {
+    this.score -= points;
+    scoreText.innerText = this.score;
+  }
+
+  //store the score and sends you to the gameover.html
+  endGame() {
+    localStorage.setItem("endScore", this.score);
+    return window.location.assign("gameover.html");
   }
 }
 

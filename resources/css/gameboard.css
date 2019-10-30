@@ -26,6 +26,10 @@
     width: 30%;
 }
 
+.choiceSelected {
+    background-color: cyan;
+}
+
 .correct, #greenCorrect {
     background-color: #28a745;
 }

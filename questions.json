@@ -6,7 +6,7 @@
       "choice2": "<javascript>",
       "choice3": "<js>",
       "choice4": "<scripting>",
-      "answer": 1
+      "answer": ["4"]
     },
     {
       "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
@@ -14,7 +14,7 @@
       "choice2": "<script name='xxx.js'>",
       "choice3": "<script src='xxx.js'>",
       "choice4": "<script file='xxx.js'>",
-      "answer": 3
+      "answer": ["1", "3"]
     },
     {
       "question": " How do you write 'Hello World' in an alert box?",
@@ -22,7 +22,7 @@
       "choice2": "alertBox('Hello World');",
       "choice3": "msg('Hello World');",
       "choice4": "alert('Hello World');",
-      "answer": 4
+      "answer": ["1", "4"]
     },
     {
       "question": "What does CPU stand for?",
@@ -30,7 +30,7 @@
       "choice2": "Creative Personal Unit",
       "choice3": "Common Process Utilty",
       "choice4": "Central Processing Unit",
-      "answer": 4
+      "answer": ["1", "4"]
     },
     {
       "question": "What amount of bits commonly equals one byte?",
@@ -38,7 +38,7 @@
       "choice2": "8",
       "choice3": "64",
       "choice4": "32",
-      "answer": 2
+      "answer": ["1", "2"]
     }
   ],
   
