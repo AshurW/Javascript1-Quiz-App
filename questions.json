@@ -9,20 +9,20 @@
       "answer": ["4"]
     },
     {
-      "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
-      "choice1": "<script href='xxx.js'>",
-      "choice2": "<script name='xxx.js'>",
-      "choice3": "<script src='xxx.js'>",
-      "choice4": "<script file='xxx.js'>",
+      "question": "Which two of these items is an input device?",
+      "choice1": "Keyboard",
+      "choice2": "Printer",
+      "choice3": "Mouse",
+      "choice4": "Computer Screen",
       "answer": ["1", "3"]
     },
     {
-      "question": " How do you write 'Hello World' in an alert box?",
-      "choice1": "msgBox('Hello World');",
-      "choice2": "alertBox('Hello World');",
-      "choice3": "msg('Hello World');",
-      "choice4": "alert('Hello World');",
-      "answer": ["1", "4"]
+      "question": "Which two of these items is an output device?",
+      "choice1": "Keyboard",
+      "choice2": "Printer",
+      "choice3": "Mouse",
+      "choice4": "Computer Screen",
+      "answer": ["2", "4"]
     },
     {
       "question": "What does CPU stand for?",
@@ -30,7 +30,7 @@
       "choice2": "Creative Personal Unit",
       "choice3": "Common Process Utilty",
       "choice4": "Central Processing Unit",
-      "answer": ["1", "4"]
+      "answer": ["4"]
     },
     {
       "question": "What amount of bits commonly equals one byte?",
@@ -38,7 +38,7 @@
       "choice2": "8",
       "choice3": "64",
       "choice4": "32",
-      "answer": ["1", "2"]
+      "answer": ["2"]
     }
   ],
   
@@ -48,8 +48,8 @@
       "choice1": "12",
       "choice2": "7",
       "choice3": "4",
-      "choice4": "9",
-      "answer": 2
+      "choice4": "7",
+      "answer": ["2", "4"]
     },
     {
       "question": "What prime number comes next after 19?",
@@ -57,7 +57,7 @@
       "choice2": "27",
       "choice3": "32",
       "choice4": "23",
-      "answer": 4
+      "answer": ["4"]
     },
     {
       "question": "How many sides does a trapezium have?",
@@ -65,7 +65,7 @@
       "choice2": "6",
       "choice3": "1",
       "choice4": "8",
-      "answer": 1
+      "answer": ["1"]
     },
     {
       "question": "What is the correct order of operations for solving equations?",
@@ -73,7 +73,7 @@
       "choice2": "Addition, Multiplication, Division, Subtraction, Addition, Parentheses",
       "choice3": "The order in which the operations are written.",
       "choice4": "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction",
-      "answer": 4
+      "answer": ["4"]
     },
     {
       "question": "What is the alphanumeric representation of the imaginary number?",
@@ -81,7 +81,7 @@
       "choice2": "i",
       "choice3": "x",
       "choice4": "n",
-      "answer": 2
+      "answer": ["2"]
     }
   ]
   
